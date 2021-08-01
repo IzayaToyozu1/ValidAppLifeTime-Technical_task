@@ -12,7 +12,7 @@ namespace ValidAppLifeTime__Technical_task_
             string textCommand = GetCommandStart(args);
             _application = new ApplicationLifeTime();
             _application.MessageProcess += MessageResult;
-            Console.Write("Введите команду по следующему шаблону: *Наименование приложения* *время разрешенной работы(в минутах)* *через какое время проверять приложение(в минутах)*\n" +
+            Console.WriteLine("Введите команду по следующему шаблону: *Наименование приложения* *время разрешенной работы(в минутах)* *через какое время проверять приложение(в минутах)*\n" +
                               "Пример: *chrome 5 1*");
             while (true)
             {

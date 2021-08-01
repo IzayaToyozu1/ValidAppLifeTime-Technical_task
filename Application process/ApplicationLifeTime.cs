@@ -33,7 +33,7 @@ namespace Application_process
             {
                 application = new Application();
                 application.FindProcess(_nameAppProc);
-                MessageProcess?.Invoke($"Приложение {_nameAppProc} найдено");
+                MessageProcess?.Invoke($"Приложение \"{_nameAppProc}\" найдено");
                 TimeCheck(_checkTime);
                 InvokeCheckTime(new object(), null);
             }
@@ -57,7 +57,7 @@ namespace Application_process
             if (GetTimeStartMinutes() > _timeLifeApp)
             {
                 application.CloseApp();
-                MessageProcess?.Invoke($"Приложение \"{_nameAppProc}\" закрыто, так как проработало больше {_timeLifeApp} мин");
+                MessageProcess?.Invoke($"Приложение \"{_nameAppProc}\" закрыто, так как проработало больше {_timeLifeApp} мин.");
                 timer.Stop();
             }
         }
