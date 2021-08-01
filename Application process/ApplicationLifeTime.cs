@@ -53,7 +53,7 @@ namespace Application_process
 
         private void InvokeCheckTime(object s, ElapsedEventArgs e)
         {
-            MessageProcess?.Invoke($"Приложение \"{_nameAppProc}\" работает {application.GetStartApp().Minutes} мин. и {application.GetStartApp().Seconds} сек.");
+            MessageProcess?.Invoke($"Приложение \"{_nameAppProc}\" работает {(int)GetTimeStartMinuts()} мин. и {application.GetStartApp().Seconds} сек.");
             if (GetTimeStartMinuts() > _timeLifeApp)
             {
                 application.CloseApp();
@@ -65,7 +65,7 @@ namespace Application_process
         private double GetTimeStartMinuts()
         {
             TimeSpan time = application.GetStartApp();
-            return time.Minutes + time.Hours * 60 + time.Seconds * 0.01 * 100 / 60;
+            return time.Minutes + time.Hours * 60 + time.Seconds / 60; //после запятой указываются сек
         }
     }
 }

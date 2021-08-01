@@ -7,15 +7,8 @@ namespace Application_process
     public class Application
     {
         public Process process { get; private set; }
-        public Application()
-        {
-        }
+        public Application() { }
 
-        /// <summary>
-        /// Get string "nameApp StartTimeApp";
-        /// </summary>
-        /// <param name="appName"></param>
-        /// <returns></returns>
         public void FindProcess(string appName)
         {
             process = Process.GetProcessesByName(appName)
