@@ -12,7 +12,7 @@ namespace ValidAppLifeTime__Technical_task_
             string textCommand = GetCommandStart(args);
             _application = new ApplicationLifeTime();
             _application.MessageProcess += MessageResult;
-            Console.WriteLine("Введите команду по следующему шаблону: *Наименование приложения* *время разрешенной работы(в минутах)* *через какое время проверять приложение(в минутах)*\n" +
+            Console.Write("Введите команду по следующему шаблону: *Наименование приложения* *время разрешенной работы(в минутах)* *через какое время проверять приложение(в минутах)*\n" +
                               "Пример: *chrome 5 1*");
             while (true)
             {
@@ -25,9 +25,17 @@ namespace ValidAppLifeTime__Technical_task_
 
         static void StartApp(string textCommand)
         {
+            int timeLifeAPp;
+            int checkTime;
             string nameApp = ConvertCommand(ref textCommand, @"\w+\W");
-            int timeLifeAPp = Convert.ToInt32(ConvertCommand(ref textCommand, @"\d+\s"));
-            int checkTime = Convert.ToInt32(textCommand);
+
+            if (int.TryParse(ConvertCommand(ref textCommand, @"\d+\s"), out timeLifeAPp) == false ||
+                int.TryParse(textCommand, out checkTime) == false)
+            {
+                Console.Write("Команда введена неверно!\nПопобуйте снова:");
+                return;
+            }
+
             _application.Options(nameApp, timeLifeAPp, checkTime);
             _application.Start();
         }
